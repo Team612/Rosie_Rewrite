@@ -4,23 +4,18 @@
 
 package frc.robot;
 
+import java.util.ResourceBundle.Control;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.DefaultDrive;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.RunGreenIndexer;
-import frc.robot.commands.ForwardIntake;
-import frc.robot.commands.ReverseIntake;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.GreenIndexer;
-import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.RunOuttake;
-import frc.robot.commands.StartIntakePiston;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Outtake;
-import frc.robot.subsystems.testIntake;
+import frc.robot.commands.ExtendArm;
+import frc.robot.commands.Pivot;
+import frc.robot.commands.RetractArm;
 import frc.robot.controls.ControlMap;
+import frc.robot.commands.PartialExtend;
+import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -30,26 +25,14 @@ import frc.robot.controls.ControlMap;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-
-
-
-  private final Drivetrain m_drivetrain = new Drivetrain();
-  private final DefaultDrive m_default = new DefaultDrive(m_drivetrain);
-
-  //subsystems
-  private final Intake m_intake = new Intake();
-  private final testIntake m_test_intake = new testIntake();
-
-  private final GreenIndexer m_green_index = new GreenIndexer();
-  private final Outtake m_outtake = new Outtake();
+  private final Climb m_climb = new Climb();
+  
+  private final Pivot m_autoCommand = new Pivot(m_climb);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    // Configure the button bindings
     configureButtonBindings();
-    configureDefaultCommands();
   }
 
   /**
@@ -59,16 +42,14 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    ControlMap.RUN_INTAKE_PISTON.toggleWhenPressed(new StartIntakePiston(m_intake));
-    ControlMap.GREEN_INDEXER.toggleWhenPressed(new RunGreenIndexer(m_green_index));
-    ControlMap.RUN_OUTTAKE.toggleWhenPressed(new RunOuttake(m_outtake));
-    ControlMap.FORWARD_INTAKE.whileHeld(new ForwardIntake(m_test_intake));
-    ControlMap.REVERSE_INTAKE.whileHeld(new ReverseIntake(m_test_intake));
+    //ControlMap.a.toggleWhenPressed(new StartEndCommand(m_climb::extendArm, m_climb::retractArm, m_climb));
+    ControlMap.b.whenPressed(new ExtendArm(m_climb).andThen(new RetractArm(m_climb)).andThen(new PartialExtend(m_climb)).andThen(new Pivot(m_climb)).andThen(new ExtendArm(m_climb)).andThen(ParallelCommandGroup(new Pivot(m_climb), new RetractArm(m_climb))).andThen(new PartialExtend(m_climb)).andThen(new Pivot(m_climb)).andThen(new ExtendArm(m_climb)).andThen(ParallelCommandGroup(new Pivot(m_climb), new RetractArm(m_climb))));
+    //SequentialCommandGroup(new ExtendArm(m_climb));
+    
+  }
 
-   }
-
-  private void configureDefaultCommands(){
-    m_drivetrain.setDefaultCommand(m_default);
+  private Command ParallelCommandGroup(Pivot pivot, RetractArm retractArm) {
+    return null;
   }
 
   /**
