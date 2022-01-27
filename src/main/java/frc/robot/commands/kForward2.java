@@ -5,33 +5,30 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Outtake;
+import frc.robot.subsystems.Climb;
 
-public class RunOuttake extends CommandBase {
-  /** Creates a new RunOuttake. */
-  private final Outtake m_outtake;
-  private final double speed = 1.0;
-  public RunOuttake(Outtake outtake) {
+public class kForward2 extends CommandBase {
+  /** Creates a new kForward1. */
+  private final Climb m_forward_climb;
+  public kForward2(Climb climb) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_outtake = outtake;
-    addRequirements(outtake);
+    m_forward_climb = climb;
+    addRequirements(climb);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_forward_climb.forwardSupport();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    m_outtake.startOuttake(speed);
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_outtake.startOuttake(0);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

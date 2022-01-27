@@ -4,39 +4,31 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Climb;
 
-
-/** An example command that uses an example subsystem. */
-public class StartIntakePiston extends CommandBase {
-  private final Intake m_intake;
-  //private final double speed = 1.0;
-
-  public StartIntakePiston(Intake intake) {
+public class kReverse2 extends CommandBase {
+  /** Creates a new kForward1. */
+  private final Climb m_forward_climb;
+  public kReverse2(Climb climb) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_intake = intake;
-    addRequirements(intake);
+    m_forward_climb = climb;
+    addRequirements(climb);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_intake.extendIntake();
+    m_forward_climb.reverseSupport();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-
-  }
-
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_intake.retractIntake();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

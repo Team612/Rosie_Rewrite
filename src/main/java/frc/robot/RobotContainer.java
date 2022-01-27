@@ -6,20 +6,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.DefaultDrive;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.RunGreenIndexer;
-import frc.robot.commands.ForwardIntake;
-import frc.robot.commands.ReverseIntake;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.GreenIndexer;
+import frc.robot.commands.*;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.RunOuttake;
-import frc.robot.commands.StartIntakePiston;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Outtake;
-import frc.robot.subsystems.testIntake;
+import frc.robot.subsystems.Climb;
+
 import frc.robot.controls.ControlMap;
 
 /**
@@ -30,26 +20,14 @@ import frc.robot.controls.ControlMap;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-
-
-
-  private final Drivetrain m_drivetrain = new Drivetrain();
-  private final DefaultDrive m_default = new DefaultDrive(m_drivetrain);
 
   //subsystems
-  private final Intake m_intake = new Intake();
-  private final testIntake m_test_intake = new testIntake();
-
-  private final GreenIndexer m_green_index = new GreenIndexer();
-  private final Outtake m_outtake = new Outtake();
+  private final Climb m_intake = new Climb();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     configureButtonBindings();
-    configureDefaultCommands();
+    //configureDefaultCommands();
   }
 
   /**
@@ -59,16 +37,15 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    ControlMap.RUN_INTAKE_PISTON.toggleWhenPressed(new StartIntakePiston(m_intake));
-    ControlMap.GREEN_INDEXER.toggleWhenPressed(new RunGreenIndexer(m_green_index));
-    ControlMap.RUN_OUTTAKE.toggleWhenPressed(new RunOuttake(m_outtake));
-    ControlMap.FORWARD_INTAKE.whileHeld(new ForwardIntake(m_test_intake));
-    ControlMap.REVERSE_INTAKE.whileHeld(new ReverseIntake(m_test_intake));
+    ControlMap.EXTEND_CLIMB_A.whenPressed(new kForward1(m_intake));
+    ControlMap.RETRACT_CLIMB_B.whenPressed(new kReverse1(m_intake));
+    ControlMap.EXTEND_SUPPORT_X.whenPressed(new kForward2(m_intake));
+    ControlMap.RETRACT_SUPPORT_Y.whenPressed(new kReverse2(m_intake));
 
    }
 
   private void configureDefaultCommands(){
-    m_drivetrain.setDefaultCommand(m_default);
+    //m_drivetrain.setDefaultCommand(m_default);
   }
 
   /**
@@ -76,8 +53,8 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
+  //public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
-  }
+    //return m_autoCommand;
+  //}
 }

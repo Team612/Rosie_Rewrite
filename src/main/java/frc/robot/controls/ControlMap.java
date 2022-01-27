@@ -14,10 +14,10 @@ public class ControlMap {
 
 
     // Driver buttons
-    public static JoystickButton EXTEND_CLIMB_A   	    = new JoystickButton(driver,1);
-    public static JoystickButton RETRACT_CLIMB_B 		= new JoystickButton(driver,2);
-    public static JoystickButton EXTEND_SUPPORT_X    	= new JoystickButton(driver,3);
-    public static JoystickButton RETRACT_SUPPORT_Y    	= new JoystickButton(driver,4);
+    public static JoystickButton EXTEND_CLIMB_A   	    = new JoystickButton(gunner,1);
+    public static JoystickButton RETRACT_CLIMB_B 		= new JoystickButton(gunner,2);
+    public static JoystickButton EXTEND_SUPPORT_X    	= new JoystickButton(gunner,3);
+    public static JoystickButton RETRACT_SUPPORT_Y    	= new JoystickButton(gunner,4);
     /*public static JoystickButton driver_button_LB   	= new JoystickButton(gunner,5);
     public static JoystickButton driver_button_RB   	= new JoystickButton(gunner,6);
     
