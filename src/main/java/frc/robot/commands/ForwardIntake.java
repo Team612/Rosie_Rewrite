@@ -15,8 +15,8 @@ public class ForwardIntake extends CommandBase {
   /**
    * Creates a new ForwardIntake.
    */
-  private final double speed = 1.0;
-  private final testIntake m_forward_intake;
+  //private final double speed = 1.0;
+  private final Intake m_forward_climb;
   public ForwardIntake(testIntake forward_intake) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_forward_intake = forward_intake;

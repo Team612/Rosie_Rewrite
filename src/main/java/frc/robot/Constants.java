@@ -14,18 +14,18 @@ package frc.robot;
  */
 public final class Constants {
     // PCM Ports
-    public static final int PCM_1 = 0;
+    //public static final int PCM_1 = 0;
     public static final int PCM_2 = 1;
 
     //solenoid drive
-    public static int[] SOLENOID_DRIVE = {0,1};// PCM 2
+    //public static int[] SOLENOID_DRIVE = {0,1};// PCM 2
 
     // Solenoid port arrays (forward, reverse)
     //public static final int[] SOLENOID_WALL = {5,4};// PCM 2
-    public static final int[] SOLENOID_INTAKE = {2,3};// PCM 2
-
+    public static final int[] SOLENOID_CLIMB = {2,3};// PCM 2
+    public static final int[] SOLENOID_SECOND = {0, 0};
     //climb
-    public static final int[] SOLENOID_ENGAGE_CLIMB = {7,6};// PCM 2
+    /*public static final int[] SOLENOID_ENGAGE_CLIMB = {7,6};// PCM 2
     public static final int[] SOLENOID_TOGGLE_HOOK = {0,1};// PCM 1
 
     //color piston 
@@ -41,5 +41,5 @@ public final class Constants {
      public static int SPARK_FR = 2;
      public static int SPARK_FL = 12;
      public static int SPARK_BR = 3;
-     public static int SPARK_BL = 1;
+     public static int SPARK_BL = 1; */
 }

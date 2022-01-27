@@ -7,18 +7,18 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class ControlMap {
 
     // Controller objects
-    public static Joystick driver = new Joystick(0);
-    public static Joystick gunner = new Joystick(1);
+    //public static Joystick driver = new Joystick(0);
+    public static Joystick gunner = new Joystick(0);
 
     //Trigger buttons
 
 
     // Driver buttons
-    public static JoystickButton driver_button_A    	= new JoystickButton(driver,1);
-    public static JoystickButton driver_button_B 		= new JoystickButton(driver,2);
-    public static JoystickButton driver_button_X    	= new JoystickButton(driver,3);
-    public static JoystickButton driver_button_Y    	= new JoystickButton(driver,4);
-    public static JoystickButton driver_button_LB   	= new JoystickButton(gunner,5);
+    public static JoystickButton EXTEND_CLIMB_A   	    = new JoystickButton(driver,1);
+    public static JoystickButton RETRACT_CLIMB_B 		= new JoystickButton(driver,2);
+    public static JoystickButton EXTEND_SUPPORT_X    	= new JoystickButton(driver,3);
+    public static JoystickButton RETRACT_SUPPORT_Y    	= new JoystickButton(driver,4);
+    /*public static JoystickButton driver_button_LB   	= new JoystickButton(gunner,5);
     public static JoystickButton driver_button_RB   	= new JoystickButton(gunner,6);
     
     public static JoystickButton driver_button_BCK  	= new JoystickButton(driver,7);
@@ -48,7 +48,7 @@ public class ControlMap {
     // Color wheel buttons
     public static JoystickButton ENGAGE_COLOR_WHEEL = new JoystickButton(gunner, 4); //Y
     public static JoystickButton ROTATE_WHEEL = new JoystickButton(gunner, 1); // A
-    public static JoystickButton SPIN_TO_COLOR = new JoystickButton(gunner, 5);
+    public static JoystickButton SPIN_TO_COLOR = new JoystickButton(gunner, 5);*/
     
     
 
