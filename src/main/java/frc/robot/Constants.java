@@ -23,7 +23,8 @@ public final class Constants {
     // Solenoid port arrays (forward, reverse)
     //public static final int[] SOLENOID_WALL = {5,4};// PCM 2
     public static final int[] SOLENOID_CLIMB = {4,5};// PCM 2
-    public static final int[] SOLENOID_SECOND = {6, 7};
+    //public static final int[] SOLENOID_SECOND = {6, 7};
+    public static final int SOLENOID_SUPPORT = 6;
     //climb
     /*public static final int[] SOLENOID_ENGAGE_CLIMB = {7,6};// PCM 2
     public static final int[] SOLENOID_TOGGLE_HOOK = {0,1};// PCM 1
